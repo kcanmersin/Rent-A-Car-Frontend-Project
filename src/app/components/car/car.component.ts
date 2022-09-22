@@ -4,6 +4,7 @@ import {HttpClient} from '@angular/common/http'
 import { CarService } from 'src/app/services/car.service';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -15,11 +16,13 @@ export class CarComponent implements OnInit {
   constructor(
     private carService:CarService,
     private activatedRoute:ActivatedRoute,
+    private toasterService:ToastrService
   ) { }
-  currentCar:CarDetailDto|null;
+  currentCar:Car|null;
   cars:Car[]=[];
-  carsDetails:CarDetailDto[]=[];
+  carsDetails:Car[]=[];
   dataLoaded=false;
+  filterText=""
   
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>
@@ -62,9 +65,13 @@ export class CarComponent implements OnInit {
       })
   }
   
-  setCurrentCar(car:CarDetailDto)
+  setCurrentCar(car:Car)
   {
     this.currentCar=car;
 
+  }
+  addToCart(car:Car)
+  {
+    this.toasterService.success("Added to cart",car.carName)
   }
 }

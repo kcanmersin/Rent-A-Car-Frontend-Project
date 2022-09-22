@@ -18,10 +18,10 @@ export class CarDetailScreenComponent implements OnInit {
     private activatedRoute:ActivatedRoute,
     private carImageService:CarImageService,
   ) { }
-  currentCar:CarDetailDto|null;
+  currentCar:Car|null;
   cars:Car[]=[];
   carImages:CarImage[]=[];
-  carsDetails:CarDetailDto[]=[];
+  carsDetails:Car[]=[];
   dataLoaded=false;
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>
