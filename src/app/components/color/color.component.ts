@@ -16,6 +16,7 @@ export class ColorComponent implements OnInit {
   currentColor:Color |null;
   colors:Color[]=[];
   dataLoaded=false;
+  filterText=""
   
   ngOnInit(): void {
     this.getColors();

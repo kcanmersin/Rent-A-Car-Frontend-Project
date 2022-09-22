@@ -1,6 +1,13 @@
 
-<ul class="list-group"
->
+<ul class="list-group">
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Search</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="write brand name">
+  </div>
+  
+  <div *ngIf="filterText.length>2" class="alert alert-warning">
+    {{filterText}} aradınız
+  </div>
 <li 
 (click)="setCurrentBrandEmpty()"
 routerLink="/cars"
@@ -8,7 +15,7 @@ routerLink="/cars"
 
 >All Cars</li>
     <li
-    *ngFor="let brand of brands"
+    *ngFor="let brand of brands |brandfilterPipe:filterText"
     (click)="setCurrentBrand(brand)"
     routerLink="/cars/brand/{{brand.brandId}}"
      class="list-group-item"

@@ -42,4 +42,25 @@ export class CarService {
       .get<ListResponseModel<Car>>(newPatht);
    
     }
+    getCarDetailsByBrandId(brandId:number) 
+    {
+      let newPatht =this.apiUrl+"cars/getcardetailbybrandId?brandId="+brandId;
+      return this.httpClient
+      .get<ListResponseModel<Car>>(newPatht);
+   
+    }
+    getCarDetailsByColorId(colorId:number) 
+    {
+      let newPatht =this.apiUrl+"cars/getcardetailbycolorid?colorId="+colorId;
+      return this.httpClient
+      .get<ListResponseModel<Car>>(newPatht);
+   
+    }
+    getCarDetailsByColorAndBrandId(colorId:number,brandId:number) 
+    {
+      let newPatht =this.apiUrl+"cars/getcardetailcolorandbrandid?colorId="+colorId+"&brandId="+brandId;
+      return this.httpClient
+      .get<ListResponseModel<Car>>(newPatht);
+   
+    }
 }

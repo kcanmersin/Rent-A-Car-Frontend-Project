@@ -1,9 +1,15 @@
-<li *ngIf="cartItems" class="nav-item dropdown">
+<li *ngIf="cartItems.length>0" class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
       Cart
     </a>
     <ul class="dropdown-menu">
-      <li *ngFor="let cartItem of cartItems" ><a  class="dropdown-item" href="#">{{cartItem.car.carName}}</a></li>
+      <li *ngFor="let cartItem of cartItems" ><a  class="dropdown-item"> 
+        <button class="btn btn-info">{{cartItem.quantity}}
+        
+        </button >
+        {{cartItem.car.carName}}
+        <button  (click)="removeFromCart(cartItem.car)" class="btn btn-danger">Delete</button > 
+      </a></li>
       <li><hr class="dropdown-divider"></li>
       <li><a class="dropdown-item" href="#">Go to Cart</a></li>
     </ul>

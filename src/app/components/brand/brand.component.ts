@@ -16,6 +16,7 @@ export class BrandComponent implements OnInit {
   currentBrand:Brand |null;
   brands:Brand[]=[];
   dataLoaded=false;
+  filterText=""
   
   ngOnInit(): void {
     this.getBrands();

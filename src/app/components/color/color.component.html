@@ -1,6 +1,13 @@
 
-<ul class="list-group"
->
+<ul class="list-group">
+  <div class="mb-3">
+    <label for="filterText" class="form-label">Search</label>
+    <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="write coılor name">
+  </div>
+  
+  <div *ngIf="filterText.length>2" class="alert alert-warning">
+    {{filterText}} aradınız
+  </div>
 <li 
 (click)="setCurrentColorEmpty()"
 routerLink="/cars"
@@ -8,7 +15,7 @@ routerLink="/cars"
 
 >All Cars</li>
     <li
-    *ngFor="let color of colors"
+    *ngFor="let color of colors |colorfilterPipe:filterText"
     (click)="setCurrentColor(color)"
     routerLink="/cars/color/{{color.colorId}}"
      class="list-group-item"
