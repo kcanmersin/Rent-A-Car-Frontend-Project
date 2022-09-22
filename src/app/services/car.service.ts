@@ -29,4 +29,17 @@ export class CarService {
     return this.httpClient
     .get<ListResponseModel<CarDetailDto>>(newPatht);
   }
+  getCarsByColor(colorId:number)
+  {
+    let newPatht =this.apiUrl+"cars/getbycolorid?colorId="+colorId;
+    return this.httpClient
+    .get<ListResponseModel<CarDetailDto>>(newPatht);
+  }
+  getCarDetails(carId:number) 
+    {
+      let newPatht =this.apiUrl+"cars/getcardetailbyid?carId="+carId;
+      return this.httpClient
+      .get<ListResponseModel<CarDetailDto>>(newPatht);
+   
+    }
 }

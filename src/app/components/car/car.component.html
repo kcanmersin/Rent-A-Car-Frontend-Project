@@ -11,7 +11,10 @@
 
 </thead>
 <tr
- *ngFor="let car of carsDetails">
+ *ngFor="let car of carsDetails"
+ (click)="setCurrentCar(car)"
+ routerLink="/cars/car-detail-screen/{{car.carId}}"
+ >
     <td>{{car.carId}}</td>
     <td>{{car.carName}}</td>
     <td>{{car.brandName}}</td>
@@ -20,5 +23,4 @@
    
 
 </tr>
-
 </table>

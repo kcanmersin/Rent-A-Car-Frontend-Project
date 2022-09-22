@@ -16,6 +16,7 @@ export class CarComponent implements OnInit {
     private carService:CarService,
     private activatedRoute:ActivatedRoute,
   ) { }
+  currentCar:CarDetailDto|null;
   cars:Car[]=[];
   carsDetails:CarDetailDto[]=[];
   dataLoaded=false;
@@ -26,6 +27,9 @@ export class CarComponent implements OnInit {
         if(params["brandId"])
         {
           this.getCarsByBrand(params["brandId"])
+        }else if(params["colorId"])
+        {
+          this.getCarsByColor(params["colorId"])
         }else
         {this.getAllCarsDetails()
         }
@@ -50,5 +54,17 @@ export class CarComponent implements OnInit {
       this.dataLoaded=true;
       })
   }
+  getCarsByColor(colorId:number)
+  {
+      this.carService.getCarsByColor(colorId).subscribe(response=>{
+      this.carsDetails=response.data;
+      this.dataLoaded=true;
+      })
+  }
+  
+  setCurrentCar(car:CarDetailDto)
+  {
+    this.currentCar=car;
 
+  }
 }
