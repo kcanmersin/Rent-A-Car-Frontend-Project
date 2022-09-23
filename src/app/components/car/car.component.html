@@ -2,6 +2,8 @@
   <span class="visually-hidden">Loading...</span>
 </div>
 <button type="button"  routerLink="/cars/add" class="btn btn-dark">Car Add</button>
+<button type="button"  routerLink="/brands/add" class="btn btn-dark">Brand Add</button>
+<button type="button"  routerLink="/colors/add" class="btn btn-dark">Color Add</button>
 <div class="container">
   <div class="row">
       <div class="col-md-3">
@@ -32,18 +34,7 @@
     {{filterText}} aradınız
   </div>
 </div>
-<!--
 
-
-
-
- 
-
-
-<div class="col-md-3 mb-3"><select class="form-select" [(ngModel)]="colorId" aria-label="Default select example"><option value="0" selected>Renk</option><option value="{{ color.id }}" *ngFor="let color of colors">
-      {{ color.colorName }}
-    </option></select></div>
--->
 <table *ngIf="dataLoaded==true" class="table">
   <thead>
     <th>Car Name</th>

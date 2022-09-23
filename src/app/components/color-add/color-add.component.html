@@ -1,0 +1,19 @@
+
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"> <h5 class="title">Add Color</h5> </div>
+            <div class="card-body">
+                <form [formGroup]="colorAddForm">
+                    <div class="mb-3">
+                        <label for="colorName">Color Name</label>
+                        <input type="text" id="colorName" formControlName="colorName" class="form-control" placeholder="Color">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button"  (click)="add()" class="btn btn-dark">Add</button>
+            </div>
+        </div>
+    </div>
+</div>
