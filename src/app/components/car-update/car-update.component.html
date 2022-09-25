@@ -1,1 +1,48 @@
-<p>car-update works!</p>
+
+<div>
+    <ul  *ngFor="let car of cars">
+      <li (click)="setCurrentCar(car)" >{{car.carName}}</li>
+    </ul>
+  </div>
+                <form  [formGroup]="carUpdateForm">
+                    <div class="mb-3">
+                        <label for="carName">Car Name</label>
+                        <input type="text" id="carName" formControlName="carName" class="form-control" placeholder="Car Name">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="brandId">Brand</label>
+                        <input type="number" id="brandId" formControlName="brandId" class="form-control" placeholder="Brand">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="colorId">Color</label>
+                        <input type="number" id="colorId" formControlName="colorId" class="form-control" placeholder="Color">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="unitsInStock">Units In Stock</label>
+                        <input type="number" id="unitsInStock" formControlName="unitsInStock" class="form-control" placeholder="Units In Stock">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="dailyPrice">Price</label>
+                        <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Price">
+                        
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" formControlName="description" class="form-control" placeholder="Description">
+    
+                    </div>
+                    <div class="mb-3">
+                        <div class="mb-3">
+                            <label for="modelYear">Model Year</label>
+                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Model Year">
+        
+                        </div>
+                    </div>
+                    <br>
+                    <button style="float:right;" type="button" (click)="updateCar()"class="btn btn-outline-dark">Güncelle </button>
+                </form>
+              

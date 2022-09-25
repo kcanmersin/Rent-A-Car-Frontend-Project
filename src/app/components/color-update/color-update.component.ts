@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup,FormBuilder,FormControl,Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { Color } from 'src/app/models/color';
 import { ColorService } from 'src/app/services/color.service';
 
@@ -10,32 +12,54 @@ import { ColorService } from 'src/app/services/color.service';
 export class ColorUpdateComponent implements OnInit {
 
   constructor(
+    private formBuilder:FormBuilder,
     private colorService:ColorService,
+    private toastrService:ToastrService,
 
   ) { }
-  colors:Color[]=[];
-  dataLoaded=false
-  currentColor:Color=null
-    colorId:number
+  colors: Color[] = [];
+  colorUpdateForm: FormGroup;
+  currentColor:Color
   ngOnInit(): void {
-    this.getColors()
+    this.getColors();
+    this.createColorUpdateForm();
+  }
+  getColors() {
+    this.colorService.getColors().subscribe((response) => {
+      this.colors = response.data;
+      
+    });
+  }
+  createColorUpdateForm() {
+    this.colorUpdateForm = this.formBuilder.group({
+      colorId: [''],
+      colorName: ['', Validators.required],
+    });
+  }
+
+  updateColor() {
+    if (this.colorUpdateForm.valid) {
+      let colorModel = Object.assign({}, this.colorUpdateForm.value);
+      console.log(colorModel.colorId)
    
+      this.colorService.update(colorModel).subscribe(
+        (response) => {
+          this.toastrService.success(response.message, 'güncellendi');
+        },
+        (responseError) => {
+          this.toastrService.error('güncellenemedi');
+        }
+      );
+    }
   }
   setCurrentColor(color:Color)
   {
     this.currentColor=color;
+    console.log(this.currentColor.colorName)
+    this.colorUpdateForm.patchValue({
+      colorId: this.currentColor.colorId,
+    });
+  }
 
-  }
-  getColors()
-  {
-      this.colorService.getColors().subscribe(response=>{
-      this.colors=response.data;
-      this.dataLoaded=true;
-      })
-  }
-  update(color:Color)
-  { 
-    this.colorService.update(color);
 
-  }
 }

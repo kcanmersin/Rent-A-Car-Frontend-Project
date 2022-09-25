@@ -1,1 +1,20 @@
-<p>brand-update works!</p>
+
+<div>
+    <ul  *ngFor="let brand of brands">
+      <li (click)="setCurrentBrand(brand)" >{{brand.brandName}}</li>
+    </ul>
+  </div>
+                <form  [formGroup]="brandUpdateForm">
+                    <div class="form-group">
+                      <label for="brandName" class="col-sm-2 col-form-label col-form-label-sm">Brand Name</label>
+                    <input type="hidden" formControlName="brandId"/>
+                     <input type="text"
+                      id="brandName" 
+                     formControlName="brandName"
+                     class="form-control"
+                     placeholder="Renk Adı"/>  
+                    </div>
+                    <br>
+                    <button style="float:right;" type="button" (click)="updateBrand()"class="btn btn-outline-dark">Güncelle </button>
+                </form>
+              

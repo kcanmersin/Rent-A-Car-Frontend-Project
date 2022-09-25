@@ -1,34 +1,20 @@
-<div>
-    <ul  *ngFor="let color of colors" >
-    <li (click)="setCurrentColor(color)"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">{{color.colorId}}-{{color.colorName}}</li>
-    </ul>
 
+<div>
+  <ul  *ngFor="let color of colors">
+    <li (click)="setCurrentColor(color)" >{{color.colorName}}</li>
+  </ul>
 </div>
-      
-        
-  
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Update Color Info </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-                
-                <label for="recipient-name" class="col-form-label">Color Name: </label>
-                <h6 *ngIf="currentColor" for="recipient-name" class="col-form-label">{{currentColor.colorName}} </h6>
-                <input type="text" class="form-control" id="recipient-name">
-            </div>
+              <form  [formGroup]="colorUpdateForm">
+                  <div class="form-group">
+                    <label for="colorName" class="col-sm-2 col-form-label col-form-label-sm">Renk Adı</label>
+                  <input type="hidden" formControlName="colorId"/>
+                   <input type="text"
+                    id="colorName" 
+                   formControlName="colorName"
+                   class="form-control"
+                   placeholder="Renk Adı"/>  
+                  </div>
+                  <br>
+                  <button style="float:right;" type="button" (click)="updateColor()"class="btn btn-outline-dark">Güncelle </button>
+              </form>
             
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button (click)="update(currentColor)" type="button" class="btn btn-primary">Save</button>
-        </div>
-      </div>
-    </div>
-  </div>
