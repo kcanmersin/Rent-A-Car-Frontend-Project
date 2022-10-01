@@ -8,14 +8,11 @@ import { TokenModel } from '../models/tokenModel';
   providedIn: 'root'
 })
 export class AuthService {
-
   apiUrl = 'https://localhost:44329/api/auth/';
   constructor(private httpClient:HttpClient) { }
-
   login(loginModel:LoginModel){
     return this.httpClient.post<SingleResponseModel<TokenModel>>(this.apiUrl+"login",loginModel)
   }
-
   isAuthenticated(){
     if(localStorage.getItem("token")){
       return true;
@@ -24,7 +21,4 @@ export class AuthService {
       return false;
     }
   }
-
-
-
 }

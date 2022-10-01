@@ -1,57 +1,42 @@
 <h2 align="center">Car Details</h2>
 <div class="row">
-<div class="col-md-6">
-
-<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-inner">
-      <div *ngFor="let img of carImages"  class="carousel-item active">
-        <img src="https://localhost:44329/Uploads/Images/{{img.imagePath}}"  height="300"   class="d-block w-100" alt="...">
+  <div class="col-md-6">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div *ngFor="let img of carImages" class="carousel-item active">
+          <img src="https://localhost:44329/Uploads/Images/{{img.imagePath}}" height="300" class="d-block w-100" alt="...">
+        </div>
       </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+  </div>
+  <div class="col-md-3">
+    <ul align="right" class="list-group list-group-flush">
+      <li class="list-group-item">Car Id:</li>
+      <li class="list-group-item">Car Name</li>
+      <li class="list-group-item">Brand :</li>
+      <li class="list-group-item">Color :</li>
+      <li class="list-group-item">Daily Price</li>
+    </ul>
+  </div>
+  <div class="col-md-3">
+    <ul *ngFor="let car of carsDetails" class="list-group list-group-flush">
+      <li class="list-group-item">{{car.carId}}</li>
+      <li class="list-group-item">{{car.carName}}</li>
+      <li class="list-group-item">{{car.brandName}}</li>
+      <li class="list-group-item">{{car.colorName}}</li>
+      <li class="list-group-item">{{car.dailyPrice}}</li>
+      <button routerLink="/payment" >Rent</button>
+    </ul>
   </div>
 </div>
-<div class="col-md-3">
-    <ul align="right" class="list-group list-group-flush">
-        <li class="list-group-item">Car Id:</li>
-        <li class="list-group-item">Car Name</li>
-        <li class="list-group-item">Brand :</li>
-        <li class="list-group-item">Color :</li>
-        <li class="list-group-item">Daily Price</li>
-      </ul>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="col-md-3">
-    <ul *ngFor="let car of carsDetails" class="list-group list-group-flush">
-        <li class="list-group-item">{{car.carId}}</li>
-        <li class="list-group-item">{{car.carName}}</li>
-        <li class="list-group-item">{{car.brandName}}</li>
-        <li class="list-group-item">{{car.colorName}}</li>
-        <li class="list-group-item">{{car.dailyPrice}}</li>
-
-      </ul>
-</div>
-</div>
-<div class="row">
-
+<div class="row"></div>
+<div>
 </div>

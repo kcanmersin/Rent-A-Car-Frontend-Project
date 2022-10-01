@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Car } from 'src/app/models/car';
 import { CarDetailDto } from 'src/app/models/carDetailDto';
 import { CarImage } from 'src/app/models/carImage';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
-
 @Component({
   selector: 'app-car-detail-screen',
   templateUrl: './car-detail-screen.component.html',
@@ -50,7 +49,9 @@ export class CarDetailScreenComponent implements OnInit {
       this.dataLoaded=true;
     })
   }
-  
+  open()
+  {
+  }
   /*
   getCarImagesByImgId(imageId:number)
   {
